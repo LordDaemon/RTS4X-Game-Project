@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace RTS4X_Game_Project
 {
@@ -11,7 +12,7 @@ namespace RTS4X_Game_Project
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread]
+        [MTAThread]
         static void Main()
         {
             using (var game = new Game1())
