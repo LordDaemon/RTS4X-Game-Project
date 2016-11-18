@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace RTS4X_Game_Project.Render
 {
-    class DrawObjectCreator //This choses the correct DrawObject given an assetname and game settings
+    public class DrawObjectCreator //This choses the correct DrawObject given an assetname and game settings.
     {
         public DrawObjectCreator(/*Parameters nececary to determine stuff! */)
         {
 
         }
 
-        public DrawObject CreateDrawObject(string assetName)
+        public DrawObject CreateDrawObject(CoreClasses.StaticObject parent, string assetName)
         {
-            // Check assetName valid.
+            // Check: assetName valid foramt.
             // Check: Static / animated.
             // Check: assetName exists.
             // Check settings: sprite /3d.
 
-
-            DrawObject obj = new DrawObject(assetName); //Temporary!
+            //everything else 
+            DrawObject obj = new DrawObject(parent); //Temporary!
             return obj;
         }
     }

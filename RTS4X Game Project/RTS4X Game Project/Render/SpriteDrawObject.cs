@@ -8,18 +8,26 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace RTS4X_Game_Project.Render
 {
-    class SpriteDrawObject : DrawObject
+    public class SpriteDrawObject : DrawObject
     {
-        private Texture2D sprite; //TODO Add support for sprithsheet stuff --> multiple sprites frommsingle file...
-        public SpriteDrawObject(string assetName) : base(assetName)
+        private Texture2D sprite; //TODO Add support for sprithsheet stuff --> multiple sprites from single file...
+        //parameters
+
+        public SpriteDrawObject(CoreClasses.StaticObject parent, Texture2D sprite /*parameters*/) : base(parent)
         {
-            //load sprite
-            
+            this.sprite = sprite;    
+            //this.parameters = parameters;        
         }
 
-        public override void Draw(GameTime GT)
+        public override bool Draw(GameTime GT/*, SpriteBatch SB*/)
         {
+            if (!base.Draw(GT/*, SB*/)) return false;
             
+            
+            //stuff
+
+            
+            return true;//if we decide not to draw return false!
         }
     }
 }

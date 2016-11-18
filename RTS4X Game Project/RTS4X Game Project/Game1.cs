@@ -11,6 +11,8 @@ namespace RTS4X_Game_Project
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        static CoreClasses.GameWorld GameWorld;
+        Texture2D background;
 
         public Game1()
         {
@@ -39,6 +41,12 @@ namespace RTS4X_Game_Project
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            background = Content.Load<Texture2D>("backgroundImage.jpg");
+
+            graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            graphics.IsFullScreen = true;
+            graphics.ApplyChanges();
 
             // TODO: use this.Content to load your game content here
         }
@@ -74,9 +82,12 @@ namespace RTS4X_Game_Project
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
 
+            spriteBatch.Draw(background, destinationRectangle: new Rectangle(0,0, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height));
             // TODO: Add your drawing code here
 
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
