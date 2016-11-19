@@ -39,7 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CoreClasses\DynamicObject.cs" />
-    <Compile Include="CoreClasses\GameState.cs" />
+    <Compile Include="GameStates\GameState.cs" />
     <Compile Include="CoreClasses\GameStateManager.cs" />
     <Compile Include="CoreClasses\GameWorld.cs" />
     <Compile Include="CoreClasses\Simulation.cs" />
@@ -47,6 +47,8 @@
     <Compile Include="CoreClasses\Unit.cs" />
     <Compile Include="CoreClasses\UnitBlueprint.cs" />
     <Compile Include="CoreClasses\GameEnviornment.cs" />
+    <Compile Include="GameStates\NoSim.cs" />
+    <Compile Include="GameStates\SimGo.cs" />
     <Compile Include="Interfaces\ISimObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="Render\DrawObjectCreator.cs" />
     <Compile Include="Render\RenderExceptions.cs" />
     <Compile Include="Render\SpriteDrawObject.cs" />
+    <Compile Include="UserInterface\SimDebugUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -72,7 +75,7 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GameObjects\" />
+    <None Include="Content\DebugFont.spritefont" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

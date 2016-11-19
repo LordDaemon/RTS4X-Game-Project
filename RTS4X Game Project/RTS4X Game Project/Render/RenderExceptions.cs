@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RTS4X_Game_Project.Render.RenderExceptions
 {
-    public class InvalidAssetNameExeption : System.Exception //Assetname could not be understood.
+    public class InvalidAssetNameExeption : Exception //Assetname could not be understood.
     {
         public InvalidAssetNameExeption() : base() { }
         public InvalidAssetNameExeption(string message) : base(message) { }
@@ -15,7 +15,7 @@ namespace RTS4X_Game_Project.Render.RenderExceptions
         protected InvalidAssetNameExeption(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext contect) { }
     }
 
-    public class AssetNotFoundExeption : System.Exception //The asset could not be found.
+    public class AssetNotFoundExeption : Exception //The asset could not be found.
     {
         public AssetNotFoundExeption() : base() { }
         public AssetNotFoundExeption(string message) : base(message) { }

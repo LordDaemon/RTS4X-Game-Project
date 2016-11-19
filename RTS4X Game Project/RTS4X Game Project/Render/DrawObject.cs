@@ -24,7 +24,7 @@ namespace RTS4X_Game_Project.Render
         }
 
         public virtual void UpdateP(GameTime GT) { }
-        public virtual bool Draw(GameTime GT/*, SpriteBatch SB*/)
+        public virtual bool Draw(GameTime GT, SpriteBatch SB)
         {
             return visible;
         }

@@ -19,9 +19,9 @@ namespace RTS4X_Game_Project.Render
             //this.parameters = parameters;        
         }
 
-        public override bool Draw(GameTime GT/*, SpriteBatch SB*/)
+        public override bool Draw(GameTime GT, SpriteBatch SB)
         {
-            if (!base.Draw(GT/*, SB*/)) return false;
+            if (!base.Draw(GT, SB)) return false;
             
             
             //stuff

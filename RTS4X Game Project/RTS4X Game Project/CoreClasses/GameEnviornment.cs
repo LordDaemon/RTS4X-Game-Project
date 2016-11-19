@@ -11,13 +11,14 @@ namespace RTS4X_Game_Project.CoreClasses
     public class GameEnviornment : Game
     {
         Texture2D background;
+        public static SpriteFont debugFont;
 
         protected GraphicsDeviceManager graphics;
         protected SpriteBatch spriteBatch;
         protected Point windowSize;
 
         protected static Point schreen;
-        //protected static GameStateManager gameStateManager;
+        protected static GameStateManager gameStateManager;
         protected static Random random;
         //protected static ContentManager contentManager;
         //protected static SettingsManager settingsManager;
@@ -30,8 +31,8 @@ namespace RTS4X_Game_Project.CoreClasses
             //contentManager = new ContentManager("Content");
             //settingsManager = new SettingsManager();
 
-            //gameStateManager = new GameStateManager();
-            //random = new Random();
+            gameStateManager = new GameStateManager();
+            random = new Random();
         }
 
         /// <summary>
@@ -56,18 +57,24 @@ namespace RTS4X_Game_Project.CoreClasses
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             background = Content.Load<Texture2D>("backgroundImage.jpg");
+            debugFont = Content.Load<SpriteFont>("DebugFont");
 
 
-            //Goto fullschreen
+            //Goto fullschreen 
+            
             graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
             graphics.IsFullScreen = true;
-            graphics.ApplyChanges();
+            graphics.ApplyChanges(); 
+            
 
             // Load blueprint files
             // Load user data
             // Index maps / scenario's
             // 
+
+            gameStateManager.AddGameState(new GameStates.SimGo("SimGo"));
+            gameStateManager.SwitchTo("SimGo");
 
 
             // TODO: use this.Content to load your game content here
@@ -89,31 +96,32 @@ namespace RTS4X_Game_Project.CoreClasses
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
+        protected override void Update(GameTime GT)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            
+            gameStateManager.Update(GT);
 
             // TODO: Add your update logic here
 
-            base.Update(gameTime);
+            base.Update(GT);
         }
 
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
+        protected override void Draw(GameTime GT)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
 
             spriteBatch.Draw(background, destinationRectangle: new Rectangle(0,0, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height));
             // TODO: Add your drawing code here
+            gameStateManager.Draw(GT, spriteBatch);
 
             spriteBatch.End();
-            base.Draw(gameTime);
+            base.Draw(GT);
         }
     }
 }
