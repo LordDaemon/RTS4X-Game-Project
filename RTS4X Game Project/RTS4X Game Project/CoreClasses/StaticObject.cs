@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace RTS4X_Game_Project.CoreClasses
 {
-    public abstract class StaticObject
+    public abstract class StaticObject : Interfaces.ISimObject
     {
         public readonly string UID; //Unique IDentifier.
         public StaticObject parent;
@@ -66,16 +66,11 @@ namespace RTS4X_Game_Project.CoreClasses
 
         public virtual Vector3 GlobalRotation
         {
-            get {
+            get
+            {
                 if (parent != null) return Rotation + parent.GlobalRotation;
                 else return Rotation;
             }
         }
-
-        public virtual void Draw(GameTime GT)
-        {
-            drawObject.Draw(GT);
-        }
-        
     }
 }

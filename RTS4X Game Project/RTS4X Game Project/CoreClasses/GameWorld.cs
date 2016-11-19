@@ -10,8 +10,8 @@ namespace RTS4X_Game_Project.CoreClasses
 {
     public class GameWorld
     {
-        List<StaticObject> allSimulationObjects; //TODO not portected - able???
-        List<Render.DrawObject> allRenderObjects;
+        protected List<StaticObject> allSimulationObjects; //TODO not portected - able???
+        protected List<Render.DrawObject> allDrawObjects;
         //UI
         //Teams
             //Victory/Defeat conditions
@@ -23,11 +23,14 @@ namespace RTS4X_Game_Project.CoreClasses
             Reset();
         }
 
+        public List<StaticObject> AllSimulationObjects { get { return allSimulationObjects; } }
+        public List<Render.DrawObject> AllDrawObjects { get { return allDrawObjects; } }
+
 
         public virtual void Reset()
         {
             allSimulationObjects = new List<StaticObject>();
-            allRenderObjects = new List<Render.DrawObject>();
+            allDrawObjects = new List<Render.DrawObject>();
             //UI = new UI();
         }
 
@@ -39,7 +42,7 @@ namespace RTS4X_Game_Project.CoreClasses
         public virtual void Add(Render.DrawObject obj)
         {
             //checks?
-            allRenderObjects.Add(obj);
+            allDrawObjects.Add(obj);
         }
 
         public virtual void RemoveMe(StaticObject obj)
@@ -48,13 +51,7 @@ namespace RTS4X_Game_Project.CoreClasses
         }
         public virtual void RemoveMe(Render.DrawObject obj)
         {
-            allRenderObjects.Remove(obj);
-        }
-
-
-        public virtual void Draw(GameTime GT/*, SpriteBatch SB*/)
-        {
-            foreach (Render.DrawObject obj in allRenderObjects) obj.Draw(GT /*, SB*/);
+            allDrawObjects.Remove(obj);
         }
     }
 }
