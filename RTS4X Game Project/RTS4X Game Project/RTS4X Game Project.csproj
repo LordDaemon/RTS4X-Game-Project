@@ -39,11 +39,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CoreClasses\DynamicObject.cs" />
+    <Compile Include="CoreClasses\GameState.cs" />
+    <Compile Include="CoreClasses\GameStateManager.cs" />
     <Compile Include="CoreClasses\GameWorld.cs" />
     <Compile Include="CoreClasses\StaticObject.cs" />
     <Compile Include="CoreClasses\Unit.cs" />
     <Compile Include="CoreClasses\UnitBlueprint.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="CoreClasses\GameEnviornment.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Render\DrawObject.cs" />

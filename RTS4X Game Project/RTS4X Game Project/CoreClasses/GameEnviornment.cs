@@ -1,23 +1,37 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace RTS4X_Game_Project
+namespace RTS4X_Game_Project.CoreClasses
 {
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class GameEnviornment : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        static CoreClasses.GameWorld GameWorld;
         Texture2D background;
 
-        public Game1()
+        protected GraphicsDeviceManager graphics;
+        protected SpriteBatch spriteBatch;
+        protected Point windowSize;
+
+        protected static Point schreen;
+        //protected static GameStateManager gameStateManager;
+        protected static Random random;
+        //protected static ContentManager contentManager;
+        //protected static SettingsManager settingsManager;
+
+        public GameEnviornment()
         {
             graphics = new GraphicsDeviceManager(this);
+
             Content.RootDirectory = "Content";
+            //contentManager = new ContentManager("Content");
+            //settingsManager = new SettingsManager();
+
+            //gameStateManager = new GameStateManager();
+            //random = new Random();
         }
 
         /// <summary>
@@ -43,10 +57,18 @@ namespace RTS4X_Game_Project
             spriteBatch = new SpriteBatch(GraphicsDevice);
             background = Content.Load<Texture2D>("backgroundImage.jpg");
 
+
+            //Goto fullschreen
             graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
             graphics.IsFullScreen = true;
             graphics.ApplyChanges();
+
+            // Load blueprint files
+            // Load user data
+            // Index maps / scenario's
+            // 
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -58,6 +80,8 @@ namespace RTS4X_Game_Project
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+
+            // Release handles to files loaded in LoadContent()
         }
 
         /// <summary>
@@ -69,6 +93,7 @@ namespace RTS4X_Game_Project
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            
 
             // TODO: Add your update logic here
 
